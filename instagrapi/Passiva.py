@@ -6,8 +6,8 @@ import time
 from datetime import datetime
 
 # Configurações
-HASHTAGS = ["kids", "children", "family"]  # Lista de hashtags para pesquisar
-NUM_POSTS = 30    # Número de imagens para coletar por hashtag
+HASHTAGS = ["kids", "child"]  # Lista de hashtags para pesquisar
+NUM_POSTS = 10    # Número de imagens para coletar por hashtag
 NUM_IMAGENS_PERFIL = 4  # Número de imagens para coletar por perfil
 PASTA_POSTS = "posts"  # Pasta para salvar as imagens dos posts
 PASTA_USUARIOS = "usuarios"  # Pasta para salvar as pastas dos usuários
@@ -35,12 +35,12 @@ def resolver_desafio(cliente, username):
         raise
 
 # Faz login no Instagram (substitua com suas credenciais)
-USERNAME = "app_teste_2023"
-PASSWORD = "Lup22@fl4"
+USERNAME = "rjlinsta"
+PASSWORD = "G0sling!"
 
 try:
     # Tenta carregar as configurações de sessão salvas
-    cliente.load_settings("teste_luiz.json")
+    cliente.load_settings("instagrapi\\rjlinsta.json")
     cliente.login(USERNAME, PASSWORD)
 except ChallengeRequired as e:
     print("Desafio necessário. Tentando resolver...")
@@ -50,7 +50,7 @@ except Exception as e:
     exit()
 
 # Salva as configurações de sessão após o login bem-sucedido
-cliente.dump_settings("teste_luiz.json")
+cliente.dump_settings("instagrapi\\rjlinsta.json")
 
 # Função para salvar uma imagem
 def salvar_imagem(url, pasta, nome_arquivo):
@@ -61,10 +61,11 @@ def salvar_imagem(url, pasta, nome_arquivo):
     except Exception as e:
         print(f"Erro ao salvar a imagem {nome_arquivo}: {e}")
 
-# Função para formatar a legenda (substituir quebras de linha por espaços)
+# Função para formatar a legenda
 def formatar_legenda(legenda):
     return legenda.replace("\n", " ") if legenda else "Sem legenda"
 
+# Função para formatar a bio
 def formatar_bio(bio):
     return bio.replace("\n", " ") if bio else "sem bio"
 
